@@ -1,7 +1,7 @@
 [mysqld]
 
 #mandatory settings to enable galera
-wresp_on=ON
+wsrep_on=ON
 wsrep_provider=/usr/lib/galera/libgalera_smm.so
 binlog_format=ROW
 log_slave_updates=1
