@@ -1,1 +1,28 @@
-hello
+[mysqld]
+
+#mandatory settings to enable galera
+wresp_on=ON
+wsrep_provider=/usr/lib/galera/libgalera_smm.so
+binlog_format=ROW
+log_slave_updates=1
+default-storage-engine=innodb
+innodb_autoinc_lock_mode=2
+query_cache_size=0
+query_cache_typr=OFF
+bind-address=0.0.0.0
+
+# Cluster Configuration
+wsrep_cluster_name="db_cluster"
+wsrep_cluster_address="gcomm://192.168.."
+wsrep_node_address="192.168.."
+wsrep_node_name="vm2"
+wsrep_sst_donor="vm3"
+
+# Galera Synchronization Configuration
+wsrep_sst_method=mariabackup
+wsrep_sst_auth="mariabackup:password"
+
+[sst]
+inno-backup-opts="--parallel=2"
+inno-apply-opts="--use-memory=500M
+
